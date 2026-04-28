@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Theme Park Table Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f8ff;
+            padding: 2rem;
+        }
+        .container {
+            background: #fff;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 { text-align: center; color: #333; }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 1rem;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 0.3rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 1.5rem;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        button:hover { background-color: #0056b3; }
+        .note {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎡 Book a Table</h1>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-error{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="restaurant">Select Restaurant</label>
+            <select name="restaurant" id="restaurant" required>
+                <option value="">-- Choose a Restaurant --</option>
+                {% for r in restaurants %}
+                    <option value="{{ r.name }}">{{ r.name }} — {{ r.location }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="name">Your Name</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="date">Date of Visit</label>
+            <input type="date" name="date" id="date" required>
+
+            <label for="time">Time</label>
+            <input type="time" name="time" id="time" required>
+
+            <label for="people">Number of Guests</label>
+            <input type="number" name="people" id="people" min="1" max="20" required>
+
+            <button type="submit">Book Table</button>
+        </form>
+
+        <div class="note">
+            Book your table ahead of time to avoid waiting in line during your park adventure!
+        </div>
+    </div>
+</body>
+</html>
