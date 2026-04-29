@@ -2,6 +2,8 @@
 
 A full-stack web application built with Django that allows guests to book tables at themed restaurants across a theme park. The system intelligently manages table availability, prevents overbooking, and matches parties to the most suitable table sizes.
 
+🌐 **Live Demo:** [https://web-production-89e3.up.railway.app/](https://web-production-89e3.up.railway.app/)
+
 ---
 
 ## 🌟 Features
@@ -21,7 +23,7 @@ A full-stack web application built with Django that allows guests to book tables
 | Layer | Technology |
 |-------|-----------|
 | Backend | Python 3.10, Django 5.2 |
-| Database | SQLite (local), MySQL (production) |
+| Database | SQLite |
 | Frontend | HTML5, CSS3 (vanilla) |
 | Data Loading | Python CSV parser + Django management command |
 | Version Control | Git + GitHub |
@@ -33,22 +35,24 @@ A full-stack web application built with Django that allows guests to book tables
 
 django-table-booking/
 ├── manage.py
-├── restaurants.csv          # Source data for restaurants & tables
+├── restaurants.csv               # Source data for restaurants & tables
 ├── requirements.txt
+├── Procfile                      # Railway deployment config
+├── runtime.txt                   # Python version for deployment
 ├── README.md
 ├── app/
-│   ├── models.py            # Restaurant, Table, Booking models
-│   ├── views.py             # Booking logic & overbooking prevention
-│   ├── urls.py              # App URL routing
-│   ├── admin.py             # Django admin registration
+│   ├── models.py                 # Restaurant, Table, Booking models
+│   ├── views.py                  # Booking logic & overbooking prevention
+│   ├── urls.py                   # App URL routing
+│   ├── admin.py                  # Django admin registration
 │   ├── templates/
-│   │   └── booking_template.html   # Booking form UI
+│   │   └── booking_template.html # Booking form UI
 │   └── management/
 │       └── commands/
-│           └── load_restaurants.py # CSV data loader
+│           └── load_restaurants.py  # CSV data loader
 └── main/
-├── settings.py          # Django configuration
-├── urls.py              # Project URL routing
+├── settings.py               # Django configuration
+├── urls.py                   # Project URL routing
 └── wsgi.py
 ---
 
@@ -73,8 +77,8 @@ django-table-booking/
 | Field | Type | Description |
 |-------|------|-------------|
 | id | AutoField | Primary key |
-| guest_name | CharField | Guest's full name |
-| email | EmailField | Guest's email |
+| guest_name | CharField | Guest full name |
+| email | EmailField | Guest email |
 | visit_date | DateField | Date of visit |
 | visit_time | TimeField | Time of visit |
 | party_size | IntegerField | Number of guests |
@@ -119,7 +123,7 @@ django-table-booking/
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/django-table-booking.git
+git clone https://github.com/Arkam11/django-table-booking.git
 cd django-table-booking
 
 # Create virtual environment
@@ -144,7 +148,7 @@ Open your browser at **http://127.0.0.1:8000** 🎉
 
 ---
 
-## 📦 Deployment (Railway)
+## 🚂 Deployment (Railway)
 
 1. Push code to GitHub
 2. Go to [railway.app](https://railway.app)
@@ -152,6 +156,7 @@ Open your browser at **http://127.0.0.1:8000** 🎉
 4. Click **New Project → Deploy from GitHub repo**
 5. Select `django-table-booking`
 6. Railway auto-detects Django and deploys!
+7. Go to **Settings → Generate Domain** to get your public URL
 
 ---
 
@@ -170,7 +175,7 @@ Open your browser at **http://127.0.0.1:8000** 🎉
 ## 👨‍💻 Author
 
 **Mohammed Arkam**
-- GitHub: [@mohammedarkam3856](https://github.com/mohammedarkam3856)
+- GitHub: [@Arkam11](https://github.com/Arkam11)
 - Email: mohammedarkam3856@gmail.com
 
 ---
