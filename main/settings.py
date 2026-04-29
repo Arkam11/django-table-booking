@@ -1,13 +1,19 @@
 from pathlib import Path
+import os
 
 # __define-ocg__ : Settings for the Theme Park Table Booking project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-)!*w_pxec!oo6^+r&7a3tfnrdzz32jbf%3ygp=2#_t3dutlhje'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-)!*w_pxec!oo6^+r&7a3tfnrdzz32jbf%3ygp=2#_t3dutlhje')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.railway.app',
+    'https://*.up.railway.app',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -61,4 +67,5 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
